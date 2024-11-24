@@ -3,7 +3,7 @@ select * from superstore limit 5;
 
 alter table superstore drop Row_ID; -- 		 deleting Row_ID
 select * from superstore   -- Selecting top first 5 rows on the basis of ship_date 
-order by ship_Date asc  
+order by ship_Date asc   
 limit 5; 
 --  --> Distinct : uses to fetch distinct values
 select distinct * from superstore ;  -- select distinct value of superstore or not show duplicate values
