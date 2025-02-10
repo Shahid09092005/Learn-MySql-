@@ -1,0 +1,36 @@
+UNION vs UNION ALL in MySQL
+Both UNION and UNION ALL are used to combine the results of two or more SELECT queries. However, there is a key difference between them:
+
+              1. UNION
+Combines the results of multiple SELECT statements.
+Removes duplicate records from the final result.
+Sorting occurs internally to eliminate duplicates, which may reduce performance.
+      Syntax:
+SELECT column1, column2 FROM table1
+UNION
+SELECT column1, column2 FROM table2;
+
+  example:
+SELECT name FROM students
+UNION
+SELECT name FROM teachers;
+
+                2. UNION ALL
+Combines the results of multiple SELECT statements.
+Includes duplicate records in the final result.
+Does not sort the result, making it faster than UNION.
+        Syntax:
+SELECT column1, column2 FROM table1
+UNION ALL
+SELECT column1, column2 FROM table2;
+
+        example:
+SELECT name FROM students
+UNION ALL
+SELECT name FROM teachers;
+
+Key Differences:
+  Feature                  	UNION	                                    UNION ALL
+  Removes Duplicates      	✅ Yes	                                    ❌ No
+  Performance	          ❌ Slower (Sorting happens)	                ✅ Faster (No sorting)
+  Use Case	              When unique records are needed	            When all records are needed, including duplicates
