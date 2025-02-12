@@ -42,6 +42,7 @@ select emp_id ,emp_name,emp_salary from table1
 union
 select emp_id , emp_name,emp_salary from table2;
 
+--  not exist
 SELECT emp_id, emp_name, emp_salary 
 FROM table1 t1
 WHERE NOT EXISTS (
@@ -51,6 +52,21 @@ WHERE NOT EXISTS (
     AND t1.emp_name = t2.emp_name
     AND t1.emp_salary = t2.emp_salary
 );
+
+
+-- intersection : not in sql directly but below their alternatives
+select emp_id ,emp_name,emp_salary from table1
+INNER JOIN table2 USING (emp_id ,emp_name,emp_salary);
+						-- or
+SELECT emp_id ,emp_name,emp_salary FROM table1 t1
+WHERE EXISTS (
+    SELECT 1 
+    FROM table2 t2 
+    WHERE 
+	t1.emp_id = t2.emp_id AND t1.emp_name = t2.emp_name AND t1.emp_salary = t2.emp_salary
+);
+
+
 
 
  
