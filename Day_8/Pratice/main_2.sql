@@ -29,3 +29,10 @@ where year=1985 and score = (select max(score) from movies
 where year = 1985); 
 
 -- Ques 4. find highest movie rating among all movies where no. of votes are > the dataset average votes
+select name, score,runtime , votes
+from  movies 
+where votes = (
+select max(votes)
+from movies 
+where votes>(select avg(votes) from movies)
+);
